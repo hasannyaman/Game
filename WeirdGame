@@ -1,6 +1,6 @@
 import java.util.*;
 //This program produces the game of SWAP
-public class HY2015400207 {
+public class WeirdGame {
 	public static void main(String[] args) {
 		Scanner console=new Scanner(System.in); // to take user's input
 		System.out.println("Welcome to this weird game of SWAP.");
