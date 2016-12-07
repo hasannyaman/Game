@@ -1,0 +1,189 @@
+import java.util.*;
+//This program produces the game of SWAP
+public class HY2015400207 {
+	public static void main(String[] args) {
+		Scanner console=new Scanner(System.in); // to take user's input
+		System.out.println("Welcome to this weird game of SWAP.");
+		System.out.print("Do you want to use the default board configuration?");
+		String answer=console.next();  //user's input
+		if(answer.equalsIgnoreCase("Yes")) {
+			defaultBoard(console);
+			System.out.println("Thank you for playing this game.");
+		} else if(answer.equalsIgnoreCase("No")) {
+			usersBoard(console);
+			System.out.println("Thank you for playing this game.");
+		}
+	}
+	public static void usersBoard(Scanner console) { //asks user's board and write the board
+		String space=console.nextLine();
+		System.out.print("Enter row 1 of the board:");
+		String line1=console.nextLine();
+		System.out.print("Enter row 2 of the board:");
+		String line2=console.nextLine();
+		System.out.print("Enter row 3 of the board:");
+		String line3=console.nextLine();
+		System.out.print("Enter row 4 of the board:");
+		String line4=console.nextLine();
+		System.out.println("This is the board configuration now:");
+		System.out.println(line1);
+		System.out.println(line2);
+		System.out.println(line3);
+		System.out.println(line4);
+		Game(console, line1,line2,line3,line4);
+	}
+	public static void defaultBoard(Scanner console) { // generates the default board
+		System.out.println("This is the board configuration now:");
+		String line1="ABGE"; 
+		String line2="RTFF";
+		String line3="AKEM";
+		String line4="GVJA";
+		System.out.println(line1);
+		System.out.println(line2);
+		System.out.println(line3);
+		System.out.println(line4);
+		Game(console, line1,line2,line3,line4);
+	}
+	public static void Game(Scanner console,String line1,String line2,String line3,String line4) { // swap the letters
+		char newchar=' ';  //store the letter which user want to change
+		char newchar2=' '; //store the other letter which user want to change
+		System.out.print("How many moves do you want to make? ");
+		int move=console.nextInt();  // count the number of move
+		System.out.print("Make a move and press enter. ");
+		System.out.print("After each move, the board configuration and your total points will be printed.");
+		System.out.print("Input the coordinates to be swapped.");
+		for(int i=1;i<=move;i++) {   
+			int x1=console.nextInt(); //get user's first coordinate
+			int y1=console.nextInt(); //get user's second coordinate
+			int x2=console.nextInt(); //get user's third coordinate
+			int y2=console.nextInt(); //get user's fourth coordinate
+			System.out.println("This is the board configuration now:");
+			if(x1==1) {              
+				if(x2==1) {
+					newchar=line1.charAt(y2-1); //to obtain the letter which the user want to swap
+				} else if(x2==2) {
+					newchar=line2.charAt(y2-1); //to obtain the letter which the user want to swap
+				} else if(x2==3) {
+					newchar=line3.charAt(y2-1); //to obtain the letter which the user want to swap
+				} else if(x2==4) {
+					newchar=line4.charAt(y2-1); //to obtain the letter which the user want to swap
+				}
+				newchar2=line1.charAt(y1-1); //to obtain the another letter which the user want to swap
+				line1=line1.substring(0, y1-1)+newchar+line1.substring(y1);  
+			} else if (x1==2) {
+				if(x2==1) {
+					newchar=line1.charAt(y2-1); //to obtain the letter which the user want to swap
+				} else if(x2==2) {
+					newchar=line2.charAt(y2-1); //to obtain the letter which the user want to swap
+				} else if(x2==3) {
+					newchar=line3.charAt(y2-1); //to obtain the letter which the user want to swap
+				} else if(x2==4) {
+					newchar=line4.charAt(y2-1); //to obtain the letter which the user want to swap
+				}
+				newchar2=line2.charAt(y1-1); //to obtain the another letter which the user want to swap
+				line2=line2.substring(0, y1-1)+newchar+line2.substring(y1);	
+			} else if (x1==3) {
+				if(x2==1) {
+					newchar=line1.charAt(y2-1); //to obtain the letter which the user want to swap
+				} else if(x2==2) {
+					newchar=line2.charAt(y2-1); //to obtain the letter which the user want to swap
+				} else if(x2==3) {
+					newchar=line3.charAt(y2-1); //to obtain the letter which the user want to swap
+				} else if(x2==4) {
+					newchar=line4.charAt(y2-1); //to obtain the letter which the user want to swap
+				}
+				newchar2=line3.charAt(y1-1); //to obtain the another letter which the user want to swap
+				line3=line3.substring(0, y1-1)+newchar+line3.substring(y1);
+			} else if (x1==4) {
+				if(x2==1) {
+					newchar=line1.charAt(y2-1); //to obtain the letter which the user want to swap
+				} else if(x2==2) {
+					newchar=line2.charAt(y2-1); //to obtain the letter which the user want to swap
+				} else if(x2==3) {
+					newchar=line3.charAt(y2-1); //to obtain the letter which the user want to swap
+				} else if(x2==4) {
+					newchar=line4.charAt(y2-1); //to obtain the letter which the user want to swap
+				}
+				newchar2=line4.charAt(y1-1); //to obtain the another letter which the user want to swap
+				line4=line4.substring(0, y1-1)+newchar+line4.substring(y1);
+			}
+			if(x2==1) {
+				line1=line1.substring(0, y2-1)+newchar2+line1.substring(y2); // to generate line1 if it is changed
+			} else if (x2==2) {
+				line2=line2.substring(0, y2-1)+newchar2+line2.substring(y2); // to generate line2 if it is changed
+			} else if (x2==3) {
+				line3=line3.substring(0, y2-1)+newchar2+line3.substring(y2); // to generate line3 if it is changed
+			} else if (x2==4) {
+				line4=line4.substring(0, y2-1)+newchar2+line4.substring(y2); // to generate line4 if it is changed
+			}
+			System.out.println(line1);
+			System.out.println(line2);
+			System.out.println(line3);
+			System.out.println(line4);
+			int finalscore=CalculateScore(line1, line2, line3, line4);
+			System.out.println();
+			System.out.println("Your total score is "+finalscore+".");
+			System.out.println();
+			finalscore=0;  // to prevent sum of score
+		}
+	}
+	public static int CalculateScore(String line1, String line2, String line3,String line4) { // calculates the score
+		int score=0;
+		line1=line1.toUpperCase();
+		line2=line2.toUpperCase();
+		line3=line3.toUpperCase();
+		line4=line4.toUpperCase();
+		char a1=line1.charAt(0);
+		char a2=line1.charAt(1);
+		char a3=line1.charAt(2);
+		char a4=line1.charAt(3);
+		if(a1==a2) {
+			score++;
+		}
+		if(a2==a3) {
+			score++;
+		}
+		if(a3==a4) {
+			score++;
+		}
+		char b1=line2.charAt(0);
+		char b2=line2.charAt(1);
+		char b3=line2.charAt(2);
+		char b4=line2.charAt(3);
+		if(b1==b2) {
+			score++;
+		}
+		if(b2==b3) {
+			score++;
+		}
+		if(b3==b4) {
+			score++;
+		}
+		char c1=line3.charAt(0);
+		char c2=line3.charAt(1);
+		char c3=line3.charAt(2);
+		char c4=line3.charAt(3);
+		if(c1==c2) {
+			score++;
+		}
+		if(c2==c3) {
+			score++;
+		}
+		if(c3==c4) {
+			score++;
+		}
+		char d1=line4.charAt(0);
+		char d2=line4.charAt(1);
+		char d3=line4.charAt(2);
+		char d4=line4.charAt(3);
+		if(d1==d2) {
+			score++;
+		}
+		if(d2==d3) {
+			score++;
+		}
+		if(d3==d4) {
+			score++;
+		}
+		return score;
+	}
+}
